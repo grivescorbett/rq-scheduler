@@ -43,7 +43,7 @@ def main():
     if args.url is not None:
         parsed = urlparse(args.url)
         if parsed.scheme == 'redis+sentinel':
-            sentinel = Sentinel([(parsed.hostname, parsed.port])
+            sentinel = Sentinel([(parsed.hostname, parsed.port)])
             connection = sentinel.master_for('mymaster', redis_class=Redis)
         else:
             connection = Redis.from_url(args.url)
